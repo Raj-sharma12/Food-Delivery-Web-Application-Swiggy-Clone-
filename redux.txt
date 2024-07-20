@@ -1,0 +1,95 @@
+we learn redux 
+how we manage  our state and create our store
+
+redux works on the datalayer of our application
+for mid size application you dont need redux 
+but for large size application you need redux
+Redux and react both are different libraries
+libraries which is used for managing states in our app
+like redux,Zustand library
+redux is primarily used for handling state manangement
+A aaplication becomes easier to debug
+redux teams offers two libraries 
+(1)->react-Redux
+(2)->redux-toolkit
+react-redux library is a kind of bridge between react and redux
+react-redux is a older way of writing redux and redux-toolkit is a newer way of writing redux in react
+
+Getting Started with Redux Toolkit
+Purpose
+The Redux Toolkit package is intended to be the standard way to write Redux logic. It was originally created to help address three common concerns about Redux:
+
+"Configuring a Redux store is too complicated"
+"I have to add a lot of packages to get Redux to do anything useful"
+"Redux requires too much boilerplate code"
+
+what is redux store?
+redux store is a big whole object but it is kept in a simple global place
+-if we click on add button redux says you cannot directly modified your cart slice
+there is a we can do that
+when you click on add button it dispatched an action
+after dispatching it calls a function () =>{} and this funtion modifies the cart this function is known as the reducer
+when you hit the add button this dispatches an action it calls the reducer function whic updates the slice of our redux store 
+how can be get or read data from redux store cart andd react cart navbar  for that we use something is known as selector 
+
+we use selector to read the data from our redux store and this selector modifies our react component
+-we say that header component are subscribe to our store and when i say subscribe the store ot will sync with the store if the data inside my store changes my header component will update automatically  this redux will automatically updated our header component
+when you click on this add button it will dispatched an action  and it will calls the reducer function and the reducer function modifies the sliice of this redux store
+and this header component subscribe to this store using a selector  
+
+
+#redux 
+1- install reduxjs -toolkit and react-redux
+2-Build our store
+3- connect the store to our app
+4-create a cart(slice)
+5-dispatch an action when we click on that button
+6-read the data using selector
+
+
+-for buil our store 
+-we use configureStore function which is comes from '@redux/toolkit' library'
+these function gives a store to our react 
+-we need to provide our store to our application for providing store to our application we need to use Procide which is comes from 'react-redux' library
+import {Procider} from 'react-redux
+why configureStore coming from '@reducjs/toolkit' because the configuringStore is a redux job
+and providing this store to react application for which need is react-redux
+import 'Procider' from 'react-reduc'
+
+for providing react store to your react whole app  wrap whole react app
+<Procider store={appStore}></Procider>
+
+for  creating a slice inside our redux store we use createSlice function which is comes from reduc toolkit library
+createSlice function have a object this function takes a configuration to create a slice 
+reducers:{
+
+} inside reduceer we will write those reducer function corresponding to the actions
+there are different types of action in our app you can add an item delete an item ,clear the card
+actions are kind of small apis to communicate that redux store i add an item i dispatches the add an items 
+reducers:{
+        addItem:(state,action) =>{
+//reducer function
+        }
+    } additem is a action inside slice reducer  function modifies the data
+    reducer function takes a two parameter one is state and second is action 
+
+    for read data from the redux store react gives a supre power Selector which is a hook inside react
+
+    -for dispatching in react we use useDispatch() hook which is comes from react-redux library 
+
+    const dispatch  =useDispatch();
+    dispatch(addItem("Pizza));
+    in this statement we add pizza overhere that is my action.payload
+    whatever this will pass in my addItem fucntion this will pass overhere in my reducer function and that to inside aa payload
+    state.items.push(action.payload)
+
+    handleAddItem(item) means you have to call these function already so dont do this
+    () => {
+        handleAddItem(item)
+    }// it is a right way
+    always subscribe to the small portion of the redux store;
+
+    #whenever doing a selector make sure you are subscribing to the right portion of the store
+    here you can optimize the performance
+    #if you dont subscribe to the right portion of the store it will bw a big performance loss
+    //i dont want to subscribe whole sttore it is foolish
