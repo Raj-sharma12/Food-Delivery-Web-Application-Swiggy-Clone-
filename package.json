@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "parcel index.html",
-    "build:css": "postcss src/styles/index.css -o dist/styles.css"
+    "start": "parcel index.html"
   },
   "author": "\"Raj sharma\"",
   "license": "ISC",
